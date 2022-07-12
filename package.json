@@ -1,0 +1,23 @@
+{
+  "name": "newme",
+  "version": "1.0.0",
+  "description": "newme web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sitouxz/newme-web.git"
+  },
+  "author": "Edwin Hati, Griffin Mumu, Owen Ombuh, and Prayer Terok",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sitouxz/newme-web/issues"
+  },
+  "homepage": "https://github.com/Sitouxz/newme-web#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
