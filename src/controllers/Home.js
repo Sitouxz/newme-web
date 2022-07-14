@@ -24,6 +24,21 @@ exports.data = (req, res, next) => {
         }
     })
 }
+exports.news = (req, res, next) => {
+    const url = 'https://dekontaminasi.com/api/id/covid19/news';
+
+    request({
+        url: url,
+        json: true
+    }, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            res.json({
+                body          
+            })         
+        }
+    })
+}
+
 
 // exports.data = (req, res, next) => {
 //     const url = 'https://covid19.mathdro.id/api/countries/indonesia';
