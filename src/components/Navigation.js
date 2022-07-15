@@ -7,7 +7,7 @@ function Navigation(props) {
   return (
     <motion.div
       transition={{ ease: 'easeOut', duration: 2 }}
-      className={`transition-all duration-500 fixed top-0 left-0 h-full w-full bg-teal-900 ${
+      className={`z-20 transition-all duration-500 fixed top-0 left-0 h-full w-full bg-teal-900 ${
         toggle ? 'w-full' : 'w-0'
       }`}>
       <div
