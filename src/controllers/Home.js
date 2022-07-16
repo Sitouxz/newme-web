@@ -40,6 +40,7 @@ exports.news = (req, res, next) => {
 }
 
 
+
 // exports.data = (req, res, next) => {
 //     const url = 'https://covid19.mathdro.id/api/countries/indonesia';
 
