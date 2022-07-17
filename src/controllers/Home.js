@@ -39,7 +39,10 @@ exports.news = (req, res, next) => {
     })
 }
 
-
+exports.home = (req, res, next) => {
+    // res.redirect('https://newme-web.herokuapp.com')
+    res.redirect('https://github.com/edwinhati/newme/tree/api')
+}
 
 // exports.data = (req, res, next) => {
 //     const url = 'https://covid19.mathdro.id/api/countries/indonesia';
