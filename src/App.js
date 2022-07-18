@@ -1,8 +1,7 @@
 import React from 'react';
-import Header from './components/Header';
-import Content from './components/Content';
-import Date from './components/Date';
-import { motion } from 'framer-motion';
+import Home from './pages/Home';
+import News from './pages/News';
+import { Routes, Route } from 'react-router-dom';
 
 // ATTENTION!!!
 // Uncomment this function and comment class below to disable loading delay animation
@@ -36,7 +35,7 @@ class App extends React.Component {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
-      }, 2000);
+      }, 0);
     });
   };
 
@@ -46,15 +45,12 @@ class App extends React.Component {
     }
 
     return (
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        className="container mx-auto px-4 bg-[#BCFFCE]">
-        <Header />
-        <Content />
-        <Date />
-      </motion.div>
+      <div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news" element={<News />} />
+        </Routes>
+      </div>
     );
   }
 }

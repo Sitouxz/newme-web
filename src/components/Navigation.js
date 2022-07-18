@@ -25,9 +25,17 @@ function Navigation(props) {
         className={`transition-all container mx-auto px-4 flex-col md:flex-row flex gap-5 justify-center my-10 ${
           toggle ? 'opacity-100 duration-500 delay-700' : 'opacity-0'
         }`}>
-        <NavCard />
-        <NavCard />
-        <NavCard />
+        <NavCard
+          to="/"
+          active={window.location.pathname === '/' ? true : false}
+          title="Home"
+        />
+        <NavCard to="/news" />
+        <NavCard
+          to="/news"
+          active={window.location.pathname === '/news' ? true : false}
+          title="News"
+        />
       </div>
     </motion.div>
   );
