@@ -4,6 +4,7 @@ import News from './pages/News';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
+
 // ATTENTION!!!
 // Uncomment this function and comment class below to disable loading delay animation
 // function App() {
@@ -15,6 +16,7 @@ import { AnimatePresence } from 'framer-motion';
 //     </div>
 //   );
 // }
+
 
 // Loading
 const App = () => {
