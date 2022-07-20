@@ -47,9 +47,10 @@ function Virus(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('virus.glb');
   const { actions } = useAnimations(animations, group);
-  // useEffect(() => {
-  //     actions.VirusAction.play();
-  // },[props]);
+  useEffect(() => {
+      actions.virusAction.play();
+  });
+  useFrame(() => (group.current.rotation.y += 0.0008))
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh position={[0, 0, 0]} castShadow receiveShadow geometry={nodes.Virus.geometry} material={materials['Material.001']}/>
