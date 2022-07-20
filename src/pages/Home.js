@@ -124,9 +124,9 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto bg-[#BCFFCE] h-screen flex flex-col justify-between overflow-hidden">
+      className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between">
       <Header progress={true} />
-      <div className="absolute absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="h-screen w-screen absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Canvas camera={{ position: [0, 0, 3], fov: 50, near: 1, far: 20 }}>
           {/* <HTMLContent /> */}
           <Scene />
