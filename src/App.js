@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import News from './pages/News';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 // ATTENTION!!!
 // Uncomment this function and comment class below to disable loading delay animation
@@ -16,22 +17,21 @@ import { Routes, Route } from 'react-router-dom';
 // }
 
 // Loading
-class App extends React.Component {
-  state = {
-    loading: true,
-  };
+const App = () => {
+  const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
-  componentDidMount() {
-    this.fakeRequest().then(() => {
+  useEffect(() => {
+    fakeRequest().then(() => {
       const el = document.querySelector('.loader-container');
       if (el) {
         el.remove();
-        this.setState({ loading: false });
+        setLoading(false);
       }
     });
-  }
+  }, []);
 
-  fakeRequest = () => {
+  const fakeRequest = () => {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve();
@@ -39,21 +39,23 @@ class App extends React.Component {
     });
   };
 
-  render() {
-    if (this.state.loading) {
-      return null;
-    }
-
-    return (
-      <div>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/news" element={<News />} />
-        </Routes>
-      </div>
-    );
+  if (loading) {
+    return null;
   }
-}
+
+  return (
+    <AnimatePresence
+      location={location}
+      key={location.key}
+      initial={false}
+      exitBeforeEnter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/news" element={<News />} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
 // End of loading
 
 // Do not comment this
