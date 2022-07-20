@@ -1,9 +1,5 @@
 import React, { useRef, useEffect, Suspense } from 'react';
-import Header from '../components/Header';
-import Content from '../components/Content';
-import Date from '../components/Date';
 import { motion } from 'framer-motion';
-
 import { Vector3 } from 'three';
 import {
   Html,
@@ -14,6 +10,11 @@ import {
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Section } from '../components/section';
+import Header from '../components/Header';
+import Content from '../components/Content';
+import Date from '../components/Date';
+import state from '../components/state';
+import Fireflies from '../components/Fireflies';
 
 const HTMLContent = () => {
   return (
@@ -31,12 +32,6 @@ const HTMLContent = () => {
     </Section>
   );
 };
-
-// function MovingSpot() {
-  
-//   })
-//   return <SpotLight castShadow ref={light} penumbra={1} distance={6} angle={0.35} attenuation={5} anglePower={4} intensity={2} {...props} />
-// }
 
 function Light({ vec = new Vector3(), ...props }){
     const light = useRef()
@@ -73,6 +68,7 @@ function Scene() {
     <>
       <Suspense fallback={null}>
         <Virus />
+        <Fireflies count={50}/>
       </Suspense>
       <SpotLight intensity={1} penumbra={1} position={[-2,8,0]} anglePower={4} distance={70} color="#BCFFCE"/>
       <SpotLight intensity={1} penumbra={1} position={[-2,-8,0]} anglePower={4} distance={80} color="#af0000"/>
@@ -87,20 +83,25 @@ export default function Home() {
     duration: 1,
     ease: [0.43, 0.13, 0.23, 0.96],
   };
-
+  const domContent = useRef();
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="mx-auto bg-[#BCFFCE]">
+      className="mx-auto bg-[#000000]">
       <Header progress={true} />
       <div className='h-screen w-screen'>
-       <Canvas camera={{ position: [0, 0, 3], fov: 50, near: 1, far: 20 }}>
-      {/* <HTMLContent /> */}
-      <Scene />
-      
+
+       <Canvas camera={{ position: [0, 0, 7], fov:50, near: 1, far: 20 }}>
+        {/* <HTMLContent /> */}
+        <Scene />
       </Canvas> 
+
+      </div>
+      <div className='scrollArea'>
+        <div style={{position: 'sticky', top:0}} ref={domContent}></div>
+        <div style={{ height: `${state.pages * 100}vh` }} />
       </div>
       <Date />
     </motion.div>
