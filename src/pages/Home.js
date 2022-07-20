@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, Suspense } from 'react';
 import { motion } from 'framer-motion';
+import virus_object from '../assets/model/virus.glb';
 import { Vector3 } from 'three';
 import {
   Html,
@@ -42,7 +43,7 @@ function Light({ vec = new Vector3(), ...props }) {
 
 function Virus(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('virus.glb');
+  const { nodes, materials, animations } = useGLTF(virus_object);
   const { actions } = useAnimations(animations, group);
   useEffect(() => {
     actions.virusAction.play();
@@ -116,15 +117,17 @@ export default function Home() {
   //   ease: [0.43, 0.13, 0.23, 0.96],
   // };
 
+  console.log(window.location.pathname);
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto bg-[#BCFFCE] h-screen flex flex-col justify-between overflow-hidden">
+      className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between">
       <Header progress={true} />
-      <div className="absolute h-screen w-screen top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="h-screen w-screen absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
+          {/* <HTMLContent /> */}
           <Scene />
           <Card />
         </Canvas>
