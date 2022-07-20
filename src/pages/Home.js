@@ -34,16 +34,25 @@ function MovingSpot({ vec = new Vector3(), ...props }) {
   return <SpotLight castShadow ref={light} penumbra={1} distance={6} angle={0.35} attenuation={5} anglePower={4} intensity={2} {...props} />
 }
 
+const Light = () => {
+  return (
+    <>
+      <SpotLight intensity={1} position={[-2,8,0]} anglePower={4} distance={100} color="#ff0000"/>
+      <SpotLight intensity={1} position={[-2,-8,0]} anglePower={4} distance={100} color="#BCFFCE"/>
+    </>
+  )
+}
+
 function Virus(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF('virus.glb');
   const { actions } = useAnimations(animations, group);
-  useEffect(() => {
-    actions.VirusAction.play();
-  });
+  // useEffect(() => {
+  //     actions.VirusAction.play();
+  // },[props]);
   return (
     <group ref={group} {...props} dispose={null}>
-      <mesh position={[0, -1.03, 0]} castShadow receiveShadow geometry={nodes.Virus.geometry} material={materials['Material.001']}/>
+      <mesh position={[0, 0, 0]} castShadow receiveShadow geometry={nodes.Virus.geometry} material={materials['Material.001']}/>
       <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} >
         {/* <planeGeometry color="white" opacity={0.5} args={[90, 50]} transparant/> */}
         <meshPhongMaterial />
@@ -56,11 +65,12 @@ function Scene() {
   const depthBuffer = useDepthBuffer({ frames: 1 })
   return (
     <>
-    <Suspense fallback={null}>
-      <Virus />
-    </Suspense>
-      <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[3, 3, 2]} />
-      <MovingSpot depthBuffer={depthBuffer} color="#b00c3f" position={[1, 3, 0]} />
+      <Suspense fallback={null}>
+        <Virus />
+      </Suspense>
+      <Light />
+      {/* <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[3, 3, 2]} />
+      <MovingSpot depthBuffer={depthBuffer} color="#b00c3f" position={[1, 3, 0]} /> */}
     </>
   )
 }
@@ -74,7 +84,7 @@ export default function Home() {
       className="mx-auto bg-[#BCFFCE]">
       <Header progress={true} />
       <div className='h-screen w-screen'>
-       <Canvas camera={{ position: [-2, 2, 6], fov: 50, near: 1, far: 20 }}>
+       <Canvas camera={{ position: [0, 0, 6], fov: 50, near: 1, far: 20 }}>
       <HTMLContent />
       <Scene />
       
