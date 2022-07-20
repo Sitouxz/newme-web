@@ -34,14 +34,12 @@ function Light({ vec = new Vector3(), ...props }){
     const light = useRef()
     const viewport = useThree((state) => state.viewport)
     useFrame((state) => {
-    light.current.target.position.lerp(vec.set(state.mouse.x / 2, (state.mouse.y * viewport.height) / 2, 0), 0.1)
+    light.current.target.position.lerp(vec.set(state.mouse.y / 8, (state.mouse.x * viewport.height) / 1, 0), 0.1)
     light.current.target.updateMatrixWorld()
     })
   return (
     <>
-      <SpotLight intensity={1} position={[-2,8,0]} anglePower={4} distance={70} color="#ff0000"/>
-      <SpotLight intensity={1} position={[-2,-8,0]} anglePower={4} distance={80} color="#BCFFCE"/>
-      <SpotLight castShadow ref={light} penumbra={1} distance={6} angle={0.35} attenuation={5} anglePower={4} {...props} />
+      <SpotLight castShadow ref={light} penumbra={1} distance={80} angle={0.15} anglePower={4} {...props} />
     </>
   )
 }
@@ -63,15 +61,14 @@ function Virus(props) {
 }
 
 function Scene() {
-  const depthBuffer = useDepthBuffer({ frames: 1 })
   return (
     <>
       <Suspense fallback={null}>
         <Virus />
       </Suspense>
-      <Light depthBuffer={depthBuffer} intensity={2} position={[2,3,0]}color="#BCFFCE" />
-      {/* <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[3, 3, 2]} />
-      <MovingSpot depthBuffer={depthBuffer} color="#b00c3f" position={[1, 3, 0]} /> */}
+      <SpotLight intensity={1} penumbra={1} position={[-2,8,0]} anglePower={4} distance={70} color="#BCFFCE"/>
+      <SpotLight intensity={1} penumbra={1} position={[-2,-8,0]} anglePower={4} distance={80} color="#af0000"/>
+      <Light intensity={0.7} position={[6,-7,0]} color="#BCFFCE" />
     </>
   )
 }
@@ -85,8 +82,8 @@ export default function Home() {
       className="mx-auto bg-[#BCFFCE]">
       <Header progress={true} />
       <div className='h-screen w-screen'>
-       <Canvas camera={{ position: [0, 0, 6], fov: 50, near: 1, far: 20 }}>
-      <HTMLContent />
+       <Canvas camera={{ position: [0, 0, 3], fov: 50, near: 1, far: 20 }}>
+      {/* <HTMLContent /> */}
       <Scene />
       
       </Canvas> 
