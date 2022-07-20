@@ -3,7 +3,7 @@ import Header from '../components/Header';
 // import Content from '../components/Content';
 import Date from '../components/Date';
 import { motion } from 'framer-motion';
-
+import object from '../assets/virus.glb';
 import { Vector3 } from 'three';
 import {
   // Html,
@@ -65,7 +65,7 @@ function Light({ vec = new Vector3(), ...props }) {
 
 function Virus(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('virus.glb');
+  const { nodes, materials, animations } = useGLTF(object);
   const { actions } = useAnimations(animations, group);
   useEffect(() => {
     actions.virusAction.play();
@@ -119,6 +119,7 @@ export default function Home() {
   //   ease: [0.43, 0.13, 0.23, 0.96],
   // };
 
+  console.log(window.location.pathname);
   return (
     <motion.div
       initial={{ opacity: 0 }}
