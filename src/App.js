@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import News from './pages/News';
 import { Routes, Route } from 'react-router-dom';
 
+
 // ATTENTION!!!
 // Uncomment this function and comment class below to disable loading delay animation
 // function App() {
@@ -14,6 +15,7 @@ import { Routes, Route } from 'react-router-dom';
 //     </div>
 //   );
 // }
+
 
 // Loading
 class App extends React.Component {
