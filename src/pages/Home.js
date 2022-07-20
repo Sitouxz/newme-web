@@ -24,21 +24,24 @@ const HTMLContent = () => {
   )
 };
 
-function MovingSpot({ vec = new Vector3(), ...props }) {
-  const light = useRef()
-  const viewport = useThree((state) => state.viewport)
-  useFrame((state) => {
-    light.current.target.position.lerp(vec.set((state.mouse.x * viewport.width) / 2, (state.mouse.y * viewport.height) / 2, 0), 0.1)
-    light.current.target.updateMatrixWorld()
-  })
-  return <SpotLight castShadow ref={light} penumbra={1} distance={6} angle={0.35} attenuation={5} anglePower={4} intensity={2} {...props} />
-}
+// function MovingSpot() {
+  
+//   })
+//   return <SpotLight castShadow ref={light} penumbra={1} distance={6} angle={0.35} attenuation={5} anglePower={4} intensity={2} {...props} />
+// }
 
-const Light = () => {
+function Light({ vec = new Vector3(), ...props }){
+    const light = useRef()
+    const viewport = useThree((state) => state.viewport)
+    useFrame((state) => {
+    light.current.target.position.lerp(vec.set(state.mouse.x / 2, (state.mouse.y * viewport.height) / 2, 0), 0.1)
+    light.current.target.updateMatrixWorld()
+    })
   return (
     <>
-      <SpotLight intensity={1} position={[-2,8,0]} anglePower={4} distance={100} color="#ff0000"/>
-      <SpotLight intensity={1} position={[-2,-8,0]} anglePower={4} distance={100} color="#BCFFCE"/>
+      <SpotLight intensity={1} position={[-2,8,0]} anglePower={4} distance={70} color="#ff0000"/>
+      <SpotLight intensity={1} position={[-2,-8,0]} anglePower={4} distance={80} color="#BCFFCE"/>
+      <SpotLight castShadow ref={light} penumbra={1} distance={6} angle={0.35} attenuation={5} anglePower={4} {...props} />
     </>
   )
 }
@@ -54,10 +57,7 @@ function Virus(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh position={[0, 0, 0]} castShadow receiveShadow geometry={nodes.Virus.geometry} material={materials['Material.001']}/>
-      <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} >
-        {/* <planeGeometry color="white" opacity={0.5} args={[90, 50]} transparant/> */}
-        <meshPhongMaterial />
-      </mesh>
+      <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
     </group>
   )
 }
@@ -69,7 +69,7 @@ function Scene() {
       <Suspense fallback={null}>
         <Virus />
       </Suspense>
-      <Light />
+      <Light depthBuffer={depthBuffer} intensity={2} position={[2,3,0]}color="#BCFFCE" />
       {/* <MovingSpot depthBuffer={depthBuffer} color="#0c8cbf" position={[3, 3, 2]} />
       <MovingSpot depthBuffer={depthBuffer} color="#b00c3f" position={[1, 3, 0]} /> */}
     </>
