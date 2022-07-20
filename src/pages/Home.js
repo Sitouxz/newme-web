@@ -4,24 +4,32 @@ import Content from '../components/Content';
 import Date from '../components/Date';
 import { motion } from 'framer-motion';
 
-import { Vector3 } from 'three'
-import {Html, SpotLight, useDepthBuffer, useGLTF, useAnimations} from '@react-three/drei';
-import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import {Section} from '../components/section';
+import { Vector3 } from 'three';
+import {
+  Html,
+  SpotLight,
+  useDepthBuffer,
+  useGLTF,
+  useAnimations,
+} from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Section } from '../components/section';
 
 const HTMLContent = () => {
   return (
     <Section factor={0.5} offset={1}>
-      <group possition={[0, 250,0]}>
-      {/* <Model/> */}
+      <group possition={[0, 250, 0]}>
+        {/* <Model/> */}
         <Html fullscreen>
           <div>
-            <h1 className='font-bold text-9xl width-h-100 bg-white-900'>Hello</h1>
+            <h1 className="font-bold text-9xl width-h-100 bg-white-900">
+              Hello
+            </h1>
           </div>
         </Html>
       </group>
     </Section>
-  )
+  );
 };
 
 // function MovingSpot() {
@@ -57,7 +65,7 @@ function Virus(props) {
       <mesh position={[0, 0, 0]} castShadow receiveShadow geometry={nodes.Virus.geometry} material={materials['Material.001']}/>
       <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
     </group>
-  )
+  );
 }
 
 function Scene() {
@@ -70,10 +78,16 @@ function Scene() {
       <SpotLight intensity={1} penumbra={1} position={[-2,-8,0]} anglePower={4} distance={80} color="#af0000"/>
       <Light intensity={0.7} position={[6,-7,0]} color="#BCFFCE" />
     </>
-  )
+  );
 }
 
 export default function Home() {
+  const transition = {
+    delay: 0.3,
+    duration: 1,
+    ease: [0.43, 0.13, 0.23, 0.96],
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
