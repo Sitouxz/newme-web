@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Home from './pages/Home';
 import News from './pages/News';
+import CovidCount from './pages/CovidCount';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
@@ -63,7 +64,7 @@ const App = () => {
   const handleLoading = () => {
     setInterval(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 0);
     // console.log('loading false');
   };
 
@@ -81,17 +82,18 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/news" element={<News />} />
+        <Route path="/covidcount" element={<CovidCount />} />
       </Routes>
     </AnimatePresence>
   ) : (
-    <div className="loader-container">
+    <div className="loader-container bg-teal-900">
       <img
         src="./loader.png"
         alt="loading"
         width="100"
-        class="animate-bounce"
+        className="animate-bounce"
       />
-      <p>Loading...</p>
+      <p className="text-white">Loading...</p>
     </div>
   );
 
