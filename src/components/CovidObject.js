@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, Suspense } from 'react';
 
-import virus_object from '../assets/model/virus.glb';
+import virus_object from '../assets/model/model.glb';
 import { Vector3 } from 'three';
 import {
   SpotLight,

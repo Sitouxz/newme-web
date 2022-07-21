@@ -5,7 +5,7 @@ import {
   useMotionValue,
   AnimatePresence,
 } from 'framer-motion';
-import virus_object from '../assets/model/virus.glb';
+import virus_object from '../assets/model/model.glb';
 import { Vector3 } from 'three';
 import {
   Html,
