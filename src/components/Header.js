@@ -9,7 +9,7 @@ function Header(props) {
   return (
     <div className="flex justify-between my-10 z-50">
       <div>
-        <Link to="/" className="font-bold text-xl text-black font-serif">
+        <Link to="/" className="font-bold text-xl font-serif">
           Newme
         </Link>
       </div>

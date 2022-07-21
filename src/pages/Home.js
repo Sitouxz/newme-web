@@ -1,5 +1,10 @@
 import React, { useRef, useEffect, Suspense } from 'react';
-import { motion } from 'framer-motion';
+import {
+  motion,
+  useTransform,
+  useMotionValue,
+  AnimatePresence,
+} from 'framer-motion';
 import virus_object from '../assets/model/virus.glb';
 import { Vector3 } from 'three';
 import {
@@ -110,12 +115,15 @@ function Card() {
   );
 }
 export default function Home() {
-  // const transition = {
-  //   delay: 0.3,
-  //   duration: 1,
-  //   ease: [0.43, 0.13, 0.23, 0.96],
-  // };
-  const domContent = useRef();
+  const transition = {
+    delay: 0.3,
+    duration: 0.6,
+    ease: [0.43, 0.13, 0.23, 0.96],
+  };
+
+  const x = useMotionValue(0);
+  const transAnim = useTransform(x, [0, 3000], [0, 1]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -138,6 +146,15 @@ export default function Home() {
         </Canvas>
       </div>
       <Date />
+      <AnimatePresence exitBeforeEnter>
+        <motion.div
+          initial={{ x: 0 }}
+          animate={{ x: -3000 }}
+          exit={{ x: 0 }}
+          transition={transition}
+          style={{ transAnim }}
+          className="z-50 fixed top-0 right-0 h-screen w-screen bg-teal-900"></motion.div>
+      </AnimatePresence>
     </motion.div>
   );
 }
