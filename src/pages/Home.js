@@ -5,7 +5,7 @@ import {
   useMotionValue,
   AnimatePresence,
 } from 'framer-motion';
-import virus_object from '../assets/model/model.glb';
+// import virus_object from '../assets/model/model.glb';
 import { Vector3 } from 'three';
 import {
   Html,
@@ -47,7 +47,7 @@ function Light({ vec = new Vector3(), ...props }) {
 
 function Virus(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF(virus_object);
+  const { nodes, materials, animations } = useGLTF('/model.glb');
   const { actions } = useAnimations(animations, group);
   useEffect(() => {
     actions.virusAction.play();
@@ -68,11 +68,30 @@ function Virus(props) {
   );
 }
 
+// function Model({ ...props }) {
+//   const group = useRef();
+//   const { nodes, materials, animations } = useGLTF('/model.glb');
+//   // const { actions } = useAnimations(animations, group);
+//   return (
+//     <group ref={group} {...props} dispose={null}>
+//       <group name="Scene">
+//         <mesh
+//           name="Virus"
+//           geometry={nodes.Virus.geometry}
+//           material={materials['Material.001']}
+//           position={[-0.05, -0.02, -0.03]}
+//         />
+//       </group>
+//     </group>
+//   );
+// }
+
 function Scene() {
   return (
     <>
       <Suspense fallback={null}>
         <Virus x={0} y={0} z={0} />
+        {/* <Model /> */}
       </Suspense>
       <SpotLight
         intensity={1}
