@@ -91,31 +91,22 @@ function Scene() {
 }
 function Card() {
   return (
-    <Section factor={0.5} offset={1}>
-      <group possition={[0, 250, 0]}>
-        {/* <Model/> */}
-        <Html fullscreen>
-          <div className="flex justify-center items-center">
-            <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row w-80 md:w-auto md:max-w-xl hover:bg-gray-100">
-              <img
-                className="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-                src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
-                alt=""
-              />
-              <div className="flex flex-col justify-between p-4 leading-normal">
-                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-                  Noteworthy technology acquisitions 2021
-                </h5>
-                <p className="mb-3 font-normal text-gray-700 ">
-                  Here are the biggest enterprise technology acquisitions of
-                  2021 so far, in reverse chronological order.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Html>
-      </group>
-    </Section>
+    <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row w-80 md:w-auto md:max-w-xl hover:bg-gray-100">
+      <img
+      className="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+      src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
+      alt=""
+      />
+      <div className="flex flex-col justify-between p-4 leading-normal">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+        Noteworthy technology acquisitions 2021
+        </h5>
+        <p className="mb-3 font-normal text-gray-700 ">
+        Here are the biggest enterprise technology acquisitions of
+        2021 so far, in reverse chronological order.
+        </p>
+      </div>
+    </div>
   );
 }
 export default function Home() {
@@ -124,7 +115,7 @@ export default function Home() {
   //   duration: 1,
   //   ease: [0.43, 0.13, 0.23, 0.96],
   // };
-
+  const domContent = useRef();
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -136,7 +127,14 @@ export default function Home() {
         <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
           {/* <HTMLContent /> */}
           <Scene />
-          <Card />
+          <Section factor={0.5} offset={1}>
+            <group possition={[0, 250, 0]}>
+              {/* <Model/> */}
+              <Html portal={domContent} fullscreen>
+                  <Card />               
+              </Html>
+            </group>
+          </Section>
         </Canvas>
       </div>
       <Date />

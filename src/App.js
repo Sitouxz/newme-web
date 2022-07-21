@@ -89,7 +89,7 @@ const App = () => {
         src="./loader.png"
         alt="loading"
         width="100"
-        class="animate-bounce"
+        className="animate-bounce"
       />
       <p>Loading...</p>
     </div>
