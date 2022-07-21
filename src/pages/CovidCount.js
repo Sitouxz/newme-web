@@ -6,7 +6,7 @@ import {
   useTransform,
   AnimatePresence,
 } from 'framer-motion';
-import SmokeElement from 'smoke-effect-react';
+// import SmokeElement from 'smoke-effect-react';
 import CovidObject from '../components/CovidObject';
 
 export default function CovidCount() {
@@ -41,14 +41,14 @@ export default function CovidCount() {
       transition={{ duration: 0.5 }}
       className="container mx-auto px-4 h-screen overflow-hidden flex flex-col justify-between text-white">
       <Header />
-      <div className="absolute top-0 left-0 h-full w-full z-0">
+      {/* <div className="absolute top-0 left-0 h-full w-full z-0">
         <SmokeElement
           src=""
           opacity="0"
           smokeSrc="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
           smokeOpacity="0.3"
         />
-      </div>
+      </div> */}
       <CovidObject x={0} y={0.5} z={0} />
       {!loading ? (
         <div className="flex flex-col justify-center items-center mb-40 z-20">

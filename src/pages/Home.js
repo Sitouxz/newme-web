@@ -5,20 +5,18 @@ import {
   useMotionValue,
   AnimatePresence,
 } from 'framer-motion';
-import virus_object from '../assets/model/virus.glb';
 import { Vector3 } from 'three';
 import {
   Html,
   SpotLight,
-  // useDepthBuffer,
   useGLTF,
   useAnimations,
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import Header from '../components/Header';
-// import Content from '../components/Content';
 import Date from '../components/Date';
-import { Section } from '../components/section';
+import {Virus} from '../components/Model';
+import Content from '../components/Content';
 
 function Light({ vec = new Vector3(), ...props }) {
   const light = useRef();
@@ -45,28 +43,6 @@ function Light({ vec = new Vector3(), ...props }) {
   );
 }
 
-function Virus(props) {
-  const group = useRef();
-  const { nodes, materials, animations } = useGLTF(virus_object);
-  const { actions } = useAnimations(animations, group);
-  useEffect(() => {
-    actions.virusAction.play();
-  });
-  useFrame(() => (group.current.rotation.y += 0.0008));
-  return (
-    <group ref={group} {...props} dispose={null}>
-      <mesh
-        position={[props.x, props.y, props.z]}
-        castShadow
-        receiveShadow
-        geometry={nodes.Virus.geometry}
-        material={materials['Material.001']}
-      />
-
-      <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
-    </group>
-  );
-}
 
 function Scene() {
   return (
@@ -94,26 +70,7 @@ function Scene() {
     </>
   );
 }
-function Card() {
-  return (
-    <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row w-80 md:w-auto md:max-w-xl hover:bg-gray-100">
-      <img
-      className="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
-      src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
-      alt=""
-      />
-      <div className="flex flex-col justify-between p-4 leading-normal">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-        Noteworthy technology acquisitions 2021
-        </h5>
-        <p className="mb-3 font-normal text-gray-700 ">
-        Here are the biggest enterprise technology acquisitions of
-        2021 so far, in reverse chronological order.
-        </p>
-      </div>
-    </div>
-  );
-}
+
 export default function Home() {
   const transition = {
     delay: 0.3,
@@ -133,17 +90,9 @@ export default function Home() {
       <Header progress={true} />
       <div className="h-screen w-screen absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
-          {/* <HTMLContent /> */}
           <Scene />
-          <Section factor={0.5} offset={1}>
-            <group possition={[0, 250, 0]}>
-              {/* <Model/> */}
-              <Html portal={domContent} fullscreen>
-                  <Card />               
-              </Html>
-            </group>
-          </Section>
         </Canvas>
+        <Content/>
       </div>
       <Date />
       <AnimatePresence exitBeforeEnter>
