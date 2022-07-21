@@ -2,6 +2,7 @@
   "name": "newme-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@react-three/drei": "^9.17.1",
     "@react-three/fiber": "^8.2.0",

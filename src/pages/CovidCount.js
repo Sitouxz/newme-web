@@ -56,7 +56,7 @@ export default function CovidCount() {
           <div className="mb-10">
             <h1 className="text-2xl font-bold">{data.Date}</h1>
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex flex-col xl:flex-row justify-between w-full">
             <div className="flex flex-col items-start">
               <p className="text-3xl">Confirmed</p>
               <h1 className="text-6xl font-bold">
