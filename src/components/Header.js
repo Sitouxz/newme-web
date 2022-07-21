@@ -7,7 +7,7 @@ function Header(props) {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <div className="flex justify-between my-10 ">
+    <div className="flex justify-between my-10 z-50">
       <div>
         <Link to="/" className="font-bold text-xl text-black font-serif">
           Newme

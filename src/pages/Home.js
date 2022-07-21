@@ -15,7 +15,6 @@ import Header from '../components/Header';
 import Date from '../components/Date';
 import { Section } from '../components/section';
 
-
 function Light({ vec = new Vector3(), ...props }) {
   const light = useRef();
   const viewport = useThree((state) => state.viewport);
@@ -52,12 +51,13 @@ function Virus(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh
-        position={[0, 0, 0]}
+        position={[props.x, props.y, props.z]}
         castShadow
         receiveShadow
         geometry={nodes.Virus.geometry}
         material={materials['Material.001']}
       />
+
       <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
     </group>
   );
@@ -67,8 +67,7 @@ function Scene() {
   return (
     <>
       <Suspense fallback={null}>
-        <Virus />
-        {/* <Fireflies count={50}/> */}
+        <Virus x={0} y={0} z={0} />
       </Suspense>
       <SpotLight
         intensity={1}
@@ -90,25 +89,34 @@ function Scene() {
     </>
   );
 }
-function Card(){
-  return(
+function Card() {
+  return (
     <Section factor={0.5} offset={1}>
       <group possition={[0, 250, 0]}>
         {/* <Model/> */}
         <Html fullscreen>
-          <div className='place-content-center'>
-            <a href="#" className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 ">
-                <img className="object-cover w-full h-96 rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg" src="/docs/images/blog/image-4.jpg" alt=""/>
-                <div className="flex flex-col justify-between p-4 leading-normal">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-                </div>
-            </a>
+          <div className="flex justify-center items-center">
+            <div className="flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row w-80 md:w-auto md:max-w-xl hover:bg-gray-100">
+              <img
+                className="object-cover rounded-t-lg md:h-auto md:w-48 md:rounded-none md:rounded-l-lg"
+                src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
+                alt=""
+              />
+              <div className="flex flex-col justify-between p-4 leading-normal">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                  Noteworthy technology acquisitions 2021
+                </h5>
+                <p className="mb-3 font-normal text-gray-700 ">
+                  Here are the biggest enterprise technology acquisitions of
+                  2021 so far, in reverse chronological order.
+                </p>
+              </div>
+            </div>
           </div>
         </Html>
       </group>
     </Section>
-  )
+  );
 }
 export default function Home() {
   // const transition = {
@@ -117,7 +125,6 @@ export default function Home() {
   //   ease: [0.43, 0.13, 0.23, 0.96],
   // };
 
-  console.log(window.location.pathname);
   return (
     <motion.div
       initial={{ opacity: 0 }}
