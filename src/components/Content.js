@@ -80,25 +80,41 @@ function Content() {
         <div
           key={index}
           ref={addToRefs}
-          className="flex flex-row items-center bg-white rounded-lg border shadow-md h-80 w-96">
-          <div>
-            <img
-              className="object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
-              src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
-              alt=""
-            />
-          </div>
-          <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          className="relative rounded-[50px] border-[6px] border-white flex h-[300px] w-[500px]  bg-[url('https://img.beritasatu.com/cache/beritasatu/910x580-2/1629780150.jpg')]">
+          <div className="absolute top-0 left-0 w-full h-full rounded-[50px] bg-gradient-to-t from-black to-transparent z-0"></div>
+          <div className="flex flex-col justify-end p-4 leading-normal z-10">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
               {++index} UPDATE Covid-19 Indonesia
             </h5>
-            <p className="mb-3 font-normal text-gray-700 ">
+            <p className="mb-3 font-normal text-white ">
               Melansir data Satgas Covid-19, hingga Kamis (21/7) ada tambahan
               5.410 kasus baru corona. Sehingga total menjadi 6.154.494 kasus
               positif Corona.
             </p>
           </div>
         </div>
+        // <div
+        //   key={index}
+        //   ref={addToRefs}
+        //   className="flex flex-row items-center bg-white rounded-lg border shadow-md h-80 w-96">
+        //   <div>
+        //     <img
+        //       className="object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
+        //       src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
+        //       alt=""
+        //     />
+        //   </div>
+        //   <div className="flex flex-col justify-between p-4 leading-normal">
+        //     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+        //       {++index} UPDATE Covid-19 Indonesia
+        //     </h5>
+        //     <p className="mb-3 font-normal text-gray-700 ">
+        //       Melansir data Satgas Covid-19, hingga Kamis (21/7) ada tambahan
+        //       5.410 kasus baru corona. Sehingga total menjadi 6.154.494 kasus
+        //       positif Corona.
+        //     </p>
+        //   </div>
+        // </div>
       ))}
     </div>
   );
