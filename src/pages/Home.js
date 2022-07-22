@@ -7,14 +7,14 @@ import {
 } from 'framer-motion';
 // import virus_object from '../assets/model/model.glb';
 // import { Vector3 } from 'three';
-// import { Html, SpotLight, useGLTF, useAnimations } from '@react-three/drei';
+import { Html, SpotLight, useGLTF, useAnimations } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import Header from '../components/Header';
 import Date from '../components/Date';
 import { Corona } from '../components/Model';
-import Content from '../components/Content';
-import { useBlock } from "../components/section";
-import { Html } from '@react-three/drei';
+import Content from '../components/Content_copy';
+import { useBlock } from "../components/blocks";
+import Cube from "../components/cube";
 // import SmokeElement from 'smoke-effect-react';
 
 // function Light({ vec = new Vector3(), ...props }) {
@@ -51,6 +51,7 @@ export default function Home() {
 
   const x = useMotionValue(0);
   const transAnim = useTransform(x, [0, 3000], [0, 1]);
+  
 
   return (
     <motion.div
@@ -71,9 +72,11 @@ export default function Home() {
       <div className="h-screen w-screen fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Corona x={0} y={0} z={0} />
       </div>
-      <div className="">
-        <Content />    
-      </div>     
+      <Canvas >
+        <Html fullscreen>
+          <Content />    
+        </Html>
+      </Canvas>
       <Date />
       <AnimatePresence exitBeforeEnter>
         <motion.div
