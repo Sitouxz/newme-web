@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, Suspense } from 'react';
-import virus_object from './model.glb';
+// import virus_object from './model.glb';
 import { Vector3 } from 'three';
 import {
   SpotLight,
@@ -37,7 +37,7 @@ function Light({ vec = new Vector3(), ...props }) {
 function Virus(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF(
-    virus_object
+    '../../model.glb'
     // '../../assets/model/model.glb'
   );
   const { actions } = useAnimations(animations, group);
