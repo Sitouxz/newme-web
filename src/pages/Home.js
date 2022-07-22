@@ -56,8 +56,8 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between text-black"
-      style={{ minHeight: '200vh' }}>
-      <Header progress={true} />
+      style={{ minHeight: '300vh' }}>
+      <Header progress={true} sticky={true} />
       {/* <div className="absolute top-0 left-0 h-max w-max z-0">
         <SmokeElement
           src=""
@@ -74,7 +74,7 @@ export default function Home() {
       <AnimatePresence exitBeforeEnter>
         <motion.div
           initial={{ x: 0 }}
-          animate={{ x: -3000 }}
+          animate={{ x: -10000 }}
           exit={{ x: 0 }}
           transition={transition}
           style={{ transAnim }}

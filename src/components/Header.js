@@ -7,7 +7,10 @@ function Header(props) {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <div className="sticky top-10 flex justify-between z-50">
+    <div
+      className={`${
+        props.sticky ? 'sticky' : 'my-10'
+      } top-10 flex justify-between z-50`}>
       <div>
         <Link to="/" className="font-bold text-xl font-serif">
           Newme

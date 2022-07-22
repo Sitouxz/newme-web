@@ -42,7 +42,7 @@ export default function News() {
   return (
     <motion.div className="container mx-auto px-4 bg-[#BCFFCE]">
       <AnimatePresence exitBeforeEnter>
-        <Header />
+        <Header sticky={false} />
       </AnimatePresence>
       <div>
         <h1 className="font-bold text-5xl">News</h1>
@@ -67,7 +67,7 @@ export default function News() {
       <AnimatePresence exitBeforeEnter>
         <motion.div
           initial={{ x: 0 }}
-          animate={{ x: -3000 }}
+          animate={{ x: -10000 }}
           exit={{ x: 0 }}
           transition={transition}
           style={{ transAnim }}

@@ -40,7 +40,7 @@ export default function CovidCount() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="container mx-auto px-4 h-screen overflow-hidden flex flex-col justify-between text-white">
-      <Header />
+      <Header sticky={false} />
       <div className="absolute top-0 left-0 h-full w-full z-0">
         <SmokeElement
           src=""
@@ -95,7 +95,7 @@ export default function CovidCount() {
       <AnimatePresence exitBeforeEnter>
         <motion.div
           initial={{ x: 0 }}
-          animate={{ x: -3000 }}
+          animate={{ x: -10000 }}
           exit={{ x: 0 }}
           transition={transition}
           style={{ transAnim }}
