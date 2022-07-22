@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import NewsCard from "../components/NewsCard";
 import { useEffect, useState } from "react";
-import Slide from "../components/Slide";
 import uniqueId from "lodash/uniqueId";
 import {
   motion,
@@ -76,7 +75,7 @@ export default function News() {
             className='z-30 fixed top-0 right-0 h-screen w-screen bg-teal-900'></motion.div>
         </AnimatePresence>
       </motion.div>
-      <Slide />
+      {/* <Slide /> */}
     </>
   );
 }

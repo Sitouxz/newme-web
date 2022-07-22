@@ -5,8 +5,8 @@ import state from "./state";
 
 const offsetContext = createContext(0);
 
-function Section({ children, offset, factor, ...props }) {
-  const { offset: parentOffset, sectionHeight, aspect } = useSection();
+function Block({ children, offset, factor, ...props }) {
+  const { offset: parentOffset, sectionHeight, aspect } = useBlock();
   const ref = useRef();
   offset = offset !== undefined ? offset : parentOffset;
   useFrame(() => {
@@ -23,7 +23,7 @@ function Section({ children, offset, factor, ...props }) {
   );
 }
 
-function useSection() {
+function useBlock() {
   const { sections, pages, zoom } = state;
   const { size, viewport } = useThree();
   const offset = useContext(offsetContext);
@@ -51,4 +51,4 @@ function useSection() {
   };
 }
 
-export { Section, useSection };
+export { Block, useBlock };
