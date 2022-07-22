@@ -7,7 +7,7 @@ import {
   AnimatePresence,
 } from 'framer-motion';
 // import SmokeElement from 'smoke-effect-react';
-import CovidObject from '../components/CovidObject';
+import {Corona} from '../components/Model';
 
 export default function CovidCount() {
   const [data, setData] = useState([]);
@@ -49,14 +49,14 @@ export default function CovidCount() {
           smokeOpacity="0.3"
         />
       </div> */}
-      <CovidObject x={0} y={0.5} z={0} />
+      <Corona x={0} y={0.5} z={0} />
       {!loading ? (
         <div className="flex flex-col justify-center items-center mb-40 z-20">
           <h1 className="text-8xl font-bold mb-10">Today Covid Count</h1>
           <div className="mb-10">
             <h1 className="text-2xl font-bold">{data.Date}</h1>
           </div>
-          <div className="flex justify-between w-full">
+          <div className="flex flex-col xl:flex-row justify-between w-full">
             <div className="flex flex-col items-start">
               <p className="text-3xl">Confirmed</p>
               <h1 className="text-6xl font-bold">

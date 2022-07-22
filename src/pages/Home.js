@@ -5,6 +5,7 @@ import {
   useMotionValue,
   AnimatePresence,
 } from 'framer-motion';
+// import virus_object from '../assets/model/model.glb';
 import { Vector3 } from 'three';
 import {
   Html,
@@ -15,7 +16,7 @@ import {
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import Header from '../components/Header';
 import Date from '../components/Date';
-import {Virus} from '../components/Model';
+import {Corona} from '../components/Model';
 import Content from '../components/Content';
 
 function Light({ vec = new Vector3(), ...props }) {
@@ -43,34 +44,6 @@ function Light({ vec = new Vector3(), ...props }) {
   );
 }
 
-
-function Scene() {
-  return (
-    <>
-      <Suspense fallback={null}>
-        <Virus x={0} y={0} z={0} />
-      </Suspense>
-      <SpotLight
-        intensity={1}
-        penumbra={1}
-        position={[-2, 8, 0]}
-        anglePower={4}
-        distance={70}
-        color="#BCFFCE"
-      />
-      <SpotLight
-        intensity={1}
-        penumbra={1}
-        position={[-2, -8, 0]}
-        anglePower={4}
-        distance={80}
-        color="#af0000"
-      />
-      <Light intensity={0.7} position={[6, -7, 0]} color="#BCFFCE" />
-    </>
-  );
-}
-
 export default function Home() {
   const transition = {
     delay: 0.3,
@@ -89,11 +62,9 @@ export default function Home() {
       className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between">
       <Header progress={true} />
       <div className="h-screen w-screen absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
-          <Scene />
-        </Canvas>
-        <Content/>
+        <Corona x={0} y={0.5} z={0}/>
       </div>
+        <Content/>
       <Date />
       <AnimatePresence exitBeforeEnter>
         <motion.div
