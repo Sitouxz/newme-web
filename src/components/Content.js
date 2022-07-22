@@ -2,6 +2,37 @@ import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+function Card({title, desc, addToRefs, index}) {
+  if (!title) {
+    title = "UPDATE Covid-19 Indonesia";
+  }
+  if (!desc) {
+    desc = "Melansir data Satgas Covid-19, hingga Kamis (21/7) ada tambahan 5.410 kasus baru corona. Sehingga total menjadi 6.154.494 kasus positif Corona.";
+  }
+
+  return (
+          <div
+          ref={addToRefs}
+          className="flex flex-row items-center bg-white rounded-lg border shadow-md h-80 w-96">
+            <div>
+              <img
+                className="object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
+                src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
+                alt=""
+              />
+            </div>
+            <div className="flex flex-col justify-between p-4 leading-normal">
+              <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                {title}
+              </h5>
+              <p className="mb-3 font-normal text-gray-700 ">
+                {desc}
+              </p>
+            </div>
+          </div>
+  );
+};
+
 function Content() {
   const boxRef = useRef([]);
   boxRef.current = [];
@@ -38,7 +69,7 @@ function Content() {
         duration: 1.25,
       }) 
         .to(el, {
-          x: -100,
+          x: -300,
           scale: 0.8 * size,
           opacity: 0.3,
           rotationY: 200,
@@ -46,7 +77,7 @@ function Content() {
           duration: 1.25,
         })
         .to(el, {
-          x: -150,
+          x: -200,
           scale: 1.5 * size,
           opacity: 0.5,
           rotationY: 40,
@@ -63,7 +94,7 @@ function Content() {
           duration: 0.5,
         })
         .to(el, {
-          x: 100,
+          x: 200,
           scale: 1.5 * size,
           opacity: 0.5,
           rotationY: -40,
@@ -71,7 +102,7 @@ function Content() {
           duration: 1,
         })
         .to(el, {
-          x: 150,
+          x: 300,
           scale: 0.3 * size,
           opacity: 0.3,
           rotationY: -170,
@@ -81,31 +112,10 @@ function Content() {
     });
   });
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10">
-      {[...Array(10)].map((_, index) => (
-        <div
-          key={index}
-          ref={addToRefs}
-          className="flex flex-row items-center bg-white rounded-lg border shadow-md h-80 w-96">
-          <div>
-            <img
-              className="object-cover rounded-t-lg md:rounded-none md:rounded-l-lg"
-              src="https://wonogirikab.go.id/wp-content/uploads/2020/09/Peduli.png"
-              alt=""
-            />
-          </div>
-          <div className="flex flex-col justify-between p-4 leading-normal">
-            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-              {++index} UPDATE Covid-19 Indonesia
-            </h5>
-            <p className="mb-3 font-normal text-gray-700 ">
-              Melansir data Satgas Covid-19, hingga Kamis (21/7) ada tambahan
-              5.410 kasus baru corona. Sehingga total menjadi 6.154.494 kasus
-              positif Corona.
-            </p>
-          </div>
-        </div>
-      ))}
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10" id='Content'
+    style={{top: "170vh"}}>
+    <Card/>
+    <Card/>
     </div>
   );
 }
