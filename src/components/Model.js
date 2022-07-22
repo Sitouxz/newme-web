@@ -32,7 +32,7 @@ function Light({ vec = new Vector3(), ...props }) {
       />
     </>
   );
-};
+}
 
 function Virus(props) {
   const group = useRef();
@@ -55,7 +55,7 @@ function Virus(props) {
       <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
     </group>
   );
-};
+}
 
 function Scene(props) {
   return (
@@ -90,7 +90,7 @@ function Scene(props) {
       <Light intensity={0.7} position={[6, -7, 0]} color="#BCFFCE" />
     </>
   );
-};
+}
 
 export function Corona(props) {
   return (
@@ -98,4 +98,4 @@ export function Corona(props) {
         <Scene x={props.x} y={props.y} z={props.z} />
       </Canvas>
   );
-};
+}
