@@ -21,7 +21,7 @@ function Header(props) {
           props.progress ? '' : 'hidden'
         }`}>
         <span>2019</span>
-        <ProgressBar bgcolor="#57BB72" progress="50" height={6} />
+        <ProgressBar bgcolor="#57BB72" progress="100" height={6} />
         <span>2022</span>
       </div>
       <button onClick={() => setToggle(true)}>

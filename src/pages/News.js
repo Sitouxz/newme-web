@@ -1,13 +1,13 @@
-import Header from '../components/Header';
-import NewsCard from '../components/NewsCard';
-import { useEffect, useState } from 'react';
-import uniqueId from 'lodash/uniqueId';
+import Header from "../components/Header";
+import NewsCard from "../components/NewsCard";
+import { useEffect, useState } from "react";
+import uniqueId from "lodash/uniqueId";
 import {
   motion,
   AnimatePresence,
   useTransform,
   useMotionValue,
-} from 'framer-motion';
+} from "framer-motion";
 
 export default function News() {
   const [news, setNews] = useState([]);
@@ -21,7 +21,7 @@ export default function News() {
   // Fetch news from https://dekontaminasi.com/api/id/covid19/news and set it to state
   useEffect(() => {
     fetch(
-      'https://api.allorigins.win/get?url=https://dekontaminasi.com/api/id/covid19/news'
+      "https://api.allorigins.win/get?url=https://dekontaminasi.com/api/id/covid19/news"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -40,39 +40,42 @@ export default function News() {
   const transAnim = useTransform(x, [0, 3000], [0, 1]);
 
   return (
-    <motion.div className="container mx-auto px-4 bg-[#BCFFCE]">
-      <AnimatePresence exitBeforeEnter>
-        <Header sticky={false} />
-      </AnimatePresence>
-      <div>
-        <h1 className="font-bold text-5xl">News</h1>
-        <p className="text-lg mb-3">
-          Latest Info About COVID-19 from trusted Source
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 mb-3">
-          {loading ? (
-            <h1>Loading...</h1>
-          ) : (
-            news.map((news) => (
-              <NewsCard
-                key={news.uniqueKey}
-                title={news.title}
-                timestamp={news.timestamp}
-                url={news.url}
-              />
-            ))
-          )}
+    <>
+      <motion.div className='container mx-auto px-4 pb-20 bg-[#BCFFCE]'>
+        <AnimatePresence exitBeforeEnter>
+          <Header sticky={false} />
+        </AnimatePresence>
+        <div>
+          <h1 className='font-bold text-5xl'>News</h1>
+          <p className='text-lg mb-3'>
+            Latest Info About COVID-19 from trusted Source
+          </p>
+          <div className='grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-3 mb-3'>
+            {loading ? (
+              <h1>Loading...</h1>
+            ) : (
+              news.map((news) => (
+                <NewsCard
+                  key={news.uniqueKey}
+                  title={news.title}
+                  timestamp={news.timestamp}
+                  url={news.url}
+                />
+              ))
+            )}
+          </div>
         </div>
-      </div>
-      <AnimatePresence exitBeforeEnter>
-        <motion.div
-          initial={{ x: 0 }}
-          animate={{ x: -10000 }}
-          exit={{ x: 0 }}
-          transition={transition}
-          style={{ transAnim }}
-          className="z-30 fixed top-0 right-0 h-screen w-screen bg-teal-900"></motion.div>
-      </AnimatePresence>
-    </motion.div>
+        <AnimatePresence exitBeforeEnter>
+          <motion.div
+            initial={{ x: 0 }}
+            animate={{ x: -10000 }}
+            exit={{ x: 0 }}
+            transition={transition}
+            style={{ transAnim }}
+            className='z-30 fixed top-0 right-0 h-screen w-screen bg-teal-900'></motion.div>
+        </AnimatePresence>
+      </motion.div>
+      {/* <Slide /> */}
+    </>
   );
 }

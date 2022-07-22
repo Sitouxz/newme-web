@@ -1,6 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useFrame } from '@react-three/fiber'
+
+import lerp from "lerp";
+import state from "./state";
+import { useBlock } from "./section";
+
 
 function Card({title, desc, addToRefs, index}) {
   if (!title) {
@@ -12,7 +18,7 @@ function Card({title, desc, addToRefs, index}) {
 
   return (
           <div
-          ref={addToRefs}
+          // ref={addToRefs}
           className="flex flex-row items-center bg-white rounded-lg border shadow-md h-80 w-96">
             <div>
               <img
@@ -33,7 +39,7 @@ function Card({title, desc, addToRefs, index}) {
   );
 };
 
-function Content() {
+function Content( { position = [0, 0, 2] } ) {
   const boxRef = useRef([]);
   boxRef.current = [];
 
@@ -49,7 +55,7 @@ function Content() {
   }
 
   useEffect(() => {
-    const size = 0.25;
+    const size = 0.5;
     boxRef.current.forEach((el, index) => {
       let tl = gsap.timeline({
         // yes, we can add it to an entire timeline!
@@ -112,10 +118,30 @@ function Content() {
     });
   });
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10" id='Content'
-    style={{top: "170vh"}}>
-    <Card/>
-    <Card/>
+      <div
+      className="flex justify-center items-center flex-col gap-10"
+      // style={{ top: '0' }}
+      id='konten'
+      ref={addToRefs}
+    >
+      {/* {[...Array(10)].map((_, index) => ( */}
+        <div
+          // key={index}
+          // ref={addToRefs}
+          className="relative rounded-[50px] border-[6px] border-white flex h-[300px] w-[500px]  bg-[url('https://img.beritasatu.com/cache/beritasatu/910x580-2/1629780150.jpg')]">
+          <div className="absolute top-0 left-0 w-full h-full rounded-[50px] bg-gradient-to-t from-black to-transparent z-0"></div>
+          <div className="flex flex-col justify-end p-4 leading-normal z-10">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
+              UPDATE Covid-19 Indonesia
+            </h5>
+            <p className="mb-3 font-normal text-white ">
+              Melansir data Satgas Covid-19, hingga Kamis (21/7) ada tambahan
+              5.410 kasus baru corona. Sehingga total menjadi 6.154.494 kasus
+              positif Corona.
+            </p>
+          </div>
+        </div>
+      {/* ))} */}
     </div>
   );
 }

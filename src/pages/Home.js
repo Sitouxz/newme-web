@@ -6,39 +6,41 @@ import {
   AnimatePresence,
 } from 'framer-motion';
 // import virus_object from '../assets/model/model.glb';
-import { Vector3 } from 'three';
-import { Html, SpotLight, useGLTF, useAnimations } from '@react-three/drei';
+// import { Vector3 } from 'three';
+// import { Html, SpotLight, useGLTF, useAnimations } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import Header from '../components/Header';
 import Date from '../components/Date';
 import { Corona } from '../components/Model';
 import Content from '../components/Content';
-import SmokeElement from 'smoke-effect-react';
+import { useBlock } from "../components/section";
+import { Html } from '@react-three/drei';
+// import SmokeElement from 'smoke-effect-react';
 
-function Light({ vec = new Vector3(), ...props }) {
-  const light = useRef();
-  const viewport = useThree((state) => state.viewport);
-  useFrame((state) => {
-    light.current.target.position.lerp(
-      vec.set(state.mouse.y / 8, (state.mouse.x * viewport.height) / 1, 0),
-      0.1
-    );
-    light.current.target.updateMatrixWorld();
-  });
-  return (
-    <>
-      <SpotLight
-        castShadow
-        ref={light}
-        penumbra={1}
-        distance={80}
-        angle={0.15}
-        anglePower={4}
-        {...props}
-      />
-    </>
-  );
-}
+// function Light({ vec = new Vector3(), ...props }) {
+//   const light = useRef();
+//   const viewport = useThree((state) => state.viewport);
+//   useFrame((state) => {
+//     light.current.target.position.lerp(
+//       vec.set(state.mouse.y / 8, (state.mouse.x * viewport.height) / 1, 0),
+//       0.1
+//     );
+//     light.current.target.updateMatrixWorld();
+//   });
+//   return (
+//     <>
+//       <SpotLight
+//         castShadow
+//         ref={light}
+//         penumbra={1}
+//         distance={80}
+//         angle={0.15}
+//         anglePower={4}
+//         {...props}
+//       />
+//     </>
+//   );
+// }
 
 export default function Home() {
   const transition = {
@@ -56,9 +58,9 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between text-black"
-      style={{ minHeight: '300vh' }}>
+      style={{ minHeight: '350vh' }}>
       <Header progress={true} sticky={true} />
-      {/* <div className="absolute top-0 left-0 h-max w-max z-0">
+      {/* <div className="absolute top-0 left-0 z-0" style={{ minHeight: '300vh' }}>
         <SmokeElement
           src=""
           opacity="0"
@@ -69,7 +71,9 @@ export default function Home() {
       <div className="h-screen w-screen fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Corona x={0} y={0} z={0} />
       </div>
-      <Content />
+      <div className="">
+        <Content />    
+      </div>     
       <Date />
       <AnimatePresence exitBeforeEnter>
         <motion.div
