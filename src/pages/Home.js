@@ -13,6 +13,7 @@ import Header from '../components/Header';
 import Date from '../components/Date';
 import { Corona } from '../components/Model';
 import Content from '../components/Content';
+import ColouredClouds from '../components/ColouredClouds';
 // import SmokeElement from 'smoke-effect-react';
 
 // function Light({ vec = new Vector3(), ...props }) {
@@ -82,6 +83,12 @@ export default function Home() {
           style={{ transAnim }}
           className="z-50 fixed top-0 right-0 h-screen w-screen bg-teal-900"></motion.div>
       </AnimatePresence>
+      <ColouredClouds
+        backLight="#ff9aee"
+        frontLight="#494b7f"
+        ambientLight="#494b7f"
+        smokeType="cloud"
+      />
     </motion.div>
   );
 }
