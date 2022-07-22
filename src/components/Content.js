@@ -25,8 +25,8 @@ function Content() {
         // yes, we can add it to an entire timeline!
         scrollTrigger: {
           trigger: el,
-          scrub: 1
-        }
+          scrub: 1,
+        },
       });
       tl.to(el, {
         x: mid,
@@ -34,7 +34,7 @@ function Content() {
         opacity: 0.3,
         rotationY: 200,
 
-        duration: 1.25
+        duration: 1.25,
       })
         .to(el, {
           x: -350,
@@ -42,7 +42,7 @@ function Content() {
           opacity: 0.5,
           rotationY: 40,
 
-          duration: 1
+          duration: 1,
         })
 
         .to(el, {
@@ -51,7 +51,7 @@ function Content() {
           rotationY: 0,
           opacity: 1,
 
-          duration: 0.5
+          duration: 0.5,
         })
         .to(el, {
           x: 400,
@@ -59,7 +59,7 @@ function Content() {
           opacity: 0.5,
           rotationY: -40,
 
-          duration: 1
+          duration: 1,
         })
         .to(el, {
           x: 200,
@@ -67,12 +67,12 @@ function Content() {
           opacity: 0.3,
           rotationY: -170,
 
-          duration: 1.25
+          duration: 1.25,
         });
     });
   });
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-10">
+    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10">
       {[...Array(10)].map((_, index) => (
         <div
           key={index}
