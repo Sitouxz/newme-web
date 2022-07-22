@@ -1,13 +1,14 @@
-import React, { useRef, useEffect, Suspense } from 'react';
+import React, { useRef, Suspense, lazy } from 'react';
 // import virus_object from './model.glb';
 import { Vector3 } from 'three';
 import {
   SpotLight,
-  useGLTF,
-  useAnimations,
+  // useGLTF,
+  // useAnimations,
   PresentationControls,
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
+const ModelComponent = lazy(() => import('./ModelComponent'));
 
 function Light({ vec = new Vector3(), ...props }) {
   const light = useRef();
@@ -34,29 +35,6 @@ function Light({ vec = new Vector3(), ...props }) {
   );
 }
 
-function Virus(props) {
-  const group = useRef();
-  const { nodes, materials, animations } = useGLTF('/model.glb');
-  const { actions } = useAnimations(animations, group);
-  useEffect(() => {
-    actions.virusAction.play();
-  });
-  useFrame(() => (group.current.rotation.y += 0.0008));
-  return (
-    <group ref={group} {...props} dispose={null}>
-      <mesh
-        position={[props.x, props.y, props.z]}
-        castShadow
-        receiveShadow
-        geometry={nodes.Virus.geometry}
-        material={materials['Material.001']}
-      />
-
-      <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
-    </group>
-  );
-}
-
 function Scene(props) {
   return (
     <>
@@ -68,7 +46,8 @@ function Scene(props) {
           rotation={[0, 0.3, 0]}
           polar={[-Math.PI / 3, Math.PI / 3]}
           azimuth={[-Math.PI / 1.4, Math.PI / 2]}>
-          <Virus x={props.x} y={props.y} z={props.z} />
+          <ModelComponent {...props} />
+          {/* <Virus x={props.x} y={props.y} z={props.z} /> */}
         </PresentationControls>
       </Suspense>
       <SpotLight
