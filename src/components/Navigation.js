@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import NavCard from './NavCard';
+// import NavCard from './NavCard';
 
 function Navigation(props) {
   const { toggle, setToggle } = props;
@@ -36,7 +36,7 @@ function Navigation(props) {
         className={`h-screen transition-all container mx-auto px-4 pb-56 flex-col md:flex-row flex gap-5 justify-start md:justify-center my-10 ${
           toggle ? 'opacity-100 duration-500 delay-700' : 'opacity-0'
         }`}>
-        <NavCard
+        {/* <NavCard
           to="/"
           imglink="home"
           active={window.location.pathname === '/' ? true : false}
@@ -53,7 +53,70 @@ function Navigation(props) {
           imglink="news"
           active={window.location.pathname === '/news' ? true : false}
           title="News"
-        />
+        /> */}
+        <Link to="/">
+          <motion.div
+            whileHover={
+              window.location.pathname === '/covidcount'
+                ? { scale: 1 }
+                : { scale: 1.1 }
+            }
+            whileTap={
+              window.location.pathname === '/covidcount'
+                ? { scale: 1 }
+                : { scale: 0.9 }
+            }
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className={`rounded-xl shadow-2xl w-full md:w-80 h-40 md:h-full bg-center bg-cover bg-home text-white font-bold text-5xl text-center flex justify-center items-center ${
+              window.location.pathname === '/'
+                ? ' '
+                : 'grayscale hover:grayscale-0'
+            }`}>
+            <h1>Home</h1>
+          </motion.div>
+        </Link>
+        <Link to="/covidcount">
+          <motion.div
+            whileHover={
+              window.location.pathname === '/covidcount'
+                ? { scale: 1 }
+                : { scale: 1.1 }
+            }
+            whileTap={
+              window.location.pathname === '/covidcount'
+                ? { scale: 1 }
+                : { scale: 0.9 }
+            }
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className={`rounded-xl shadow-2xl w-full md:w-80 h-40 md:h-full bg-center bg-cover bg-covidcount text-white font-bold text-5xl text-center flex justify-center items-center ${
+              window.location.pathname === '/covidcount'
+                ? ' '
+                : 'grayscale hover:grayscale-0'
+            }`}>
+            <h1>Covid Count</h1>
+          </motion.div>
+        </Link>
+        <Link to="/news">
+          <motion.div
+            whileHover={
+              window.location.pathname === '/covidcount'
+                ? { scale: 1 }
+                : { scale: 1.1 }
+            }
+            whileTap={
+              window.location.pathname === '/covidcount'
+                ? { scale: 1 }
+                : { scale: 0.9 }
+            }
+            transition={{ duration: 0.2, ease: 'easeOut' }}
+            className={`rounded-xl shadow-2xl w-full md:w-80 h-40 md:h-full bg-center bg-cover bg-news text-white font-bold text-5xl text-center flex justify-center items-center ${
+              window.location.pathname === '/news'
+                ? ' '
+                : 'grayscale hover:grayscale-0'
+            }`}>
+            <h1>News</h1>
+          </motion.div>
+        </Link>
       </div>
     </motion.div>
   );

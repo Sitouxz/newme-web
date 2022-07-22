@@ -1,11 +1,11 @@
-import React, { useRef } from "react";
-import { Canvas, useFrame } from '@react-three/fiber';
-import { useBlock } from "./blocks";
-import { Euler } from "three";
-import state from "./state";
-import lerp from "lerp";
+import React, { useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
+import { useBlock } from './blocks';
+import { Euler } from 'three';
+import state from './state';
+import lerp from 'lerp';
 
-function Box({ color = "black", ...props }) {
+function Box({ color = 'black', ...props }) {
   return (
     <mesh {...props}>
       <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
@@ -14,10 +14,10 @@ function Box({ color = "black", ...props }) {
   );
 }
 const Cube = () => {
-  const { contentMaxWidth: w, mobile } = useBlock();
+  const { contentMaxWidth: w } = useBlock();
   const ref = useRef();
   const { viewportHeight, contentMaxWidth, canvasHeight } = useBlock();
-  const position = [w / 2, canvasHeight / 2 - 1, 2]
+  const position = [w / 2, canvasHeight / 2 - 1, 2];
   useFrame(() => {
     const curTop = state.top.current;
 
@@ -43,12 +43,11 @@ const Cube = () => {
     ref.current.rotation.x = rateY;
     ref.current.rotation.z = rateY;
   });
-  
+
   return (
-      <group ref={ref} scale={[2, 2, 2]} position={position}>
-        <Box scale={[0.3, 0.3, 0.3]} rotation={new Euler(0.5, 0.5, 0)} />
-      </group>
-    
+    <group ref={ref} scale={[2, 2, 2]} position={position}>
+      <Box scale={[0.3, 0.3, 0.3]} rotation={new Euler(0.5, 0.5, 0)} />
+    </group>
   );
 };
 

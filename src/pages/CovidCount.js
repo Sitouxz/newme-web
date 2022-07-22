@@ -54,14 +54,16 @@ export default function CovidCount() {
       </div>
       {!loading ? (
         <div className="flex flex-col justify-center items-center mb-40 z-20">
-          <h1 className="text-8xl font-bold mb-10">Today Covid Count</h1>
+          <h1 className="text-6xl md:text-8xl font-bold mb-10">
+            Today Covid Count
+          </h1>
           <div className="mb-10">
             <h1 className="text-2xl font-bold">{data.Date}</h1>
           </div>
           <div className="flex flex-col xl:flex-row justify-between w-full">
             <div className="flex flex-col items-start">
               <p className="text-3xl">Confirmed</p>
-              <h1 className="text-6xl font-bold">
+              <h1 className="text-5xl font-bold">
                 {data.Confirmed.Total}{' '}
                 <span className="text-3xl font-medium text-green-500">
                   {data.Confirmed.New} New
@@ -70,7 +72,7 @@ export default function CovidCount() {
             </div>
             <div className="flex flex-col items-start">
               <p className="text-3xl">Recovered</p>
-              <h1 className="text-6xl font-bold">
+              <h1 className="text-5xl font-bold">
                 {data.Recovered.Total}{' '}
                 <span className="text-3xl font-medium text-green-500">
                   {data.Recovered.New} New
@@ -79,7 +81,7 @@ export default function CovidCount() {
             </div>
             <div className="flex flex-col items-start">
               <p className="text-3xl">Deaths</p>
-              <h1 className="text-6xl font-bold">
+              <h1 className="text-5xl font-bold">
                 {data.Deaths.Total}{' '}
                 <span className="text-3xl font-medium text-green-500">
                   {data.Deaths.New} New
