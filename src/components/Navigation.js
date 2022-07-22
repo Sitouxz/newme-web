@@ -38,16 +38,19 @@ function Navigation(props) {
         }`}>
         <NavCard
           to="/"
+          imglink="home"
           active={window.location.pathname === '/' ? true : false}
           title="Home"
         />
         <NavCard
           to="/covidcount"
+          imglink="covidcount"
           active={window.location.pathname === '/covidcount' ? true : false}
           title="Covid Live Count"
         />
         <NavCard
           to="/news"
+          imglink="news"
           active={window.location.pathname === '/news' ? true : false}
           title="News"
         />

@@ -13,8 +13,8 @@ import Header from '../components/Header';
 import Date from '../components/Date';
 import { Corona } from '../components/Model';
 import Content from '../components/Content';
-import ColouredClouds from '../components/ColouredClouds';
-// import SmokeElement from 'smoke-effect-react';
+// import ColouredClouds from '../components/ColouredClouds';
+import SmokeElement from 'smoke-effect-react';
 
 // function Light({ vec = new Vector3(), ...props }) {
 //   const light = useRef();
@@ -56,17 +56,17 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between text-black"
+      className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between text-white"
       style={{ minHeight: '350vh' }}>
       <Header progress={true} sticky={true} />
-      {/* <div className="absolute top-0 left-0 z-0" style={{ minHeight: '300vh' }}>
+      <div className="fixed top-0 left-0 z-0" style={{ minHeight: '300vh' }}>
         <SmokeElement
           src=""
           opacity="0"
           smokeSrc="https://s3-us-west-2.amazonaws.com/s.cdpn.io/95637/Smoke-Element.png"
           smokeOpacity="0.3"
         />
-      </div> */}
+      </div>
       <div className="h-screen w-screen fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Corona x={0} y={0} z={0} />
       </div>
@@ -83,12 +83,12 @@ export default function Home() {
           style={{ transAnim }}
           className="z-50 fixed top-0 right-0 h-screen w-screen bg-teal-900"></motion.div>
       </AnimatePresence>
-      <ColouredClouds
+      {/* <ColouredClouds
         backLight="#ff9aee"
         frontLight="#494b7f"
         ambientLight="#494b7f"
         smokeType="cloud"
-      />
+      /> */}
     </motion.div>
   );
 }
