@@ -7,7 +7,7 @@ import {
   AnimatePresence,
 } from 'framer-motion';
 // import SmokeElement from 'smoke-effect-react';
-import {Corona} from '../components/Model';
+import { Corona } from '../components/Model';
 
 export default function CovidCount() {
   const [data, setData] = useState([]);

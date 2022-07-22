@@ -7,16 +7,11 @@ import {
 } from 'framer-motion';
 // import virus_object from '../assets/model/model.glb';
 import { Vector3 } from 'three';
-import {
-  Html,
-  SpotLight,
-  useGLTF,
-  useAnimations,
-} from '@react-three/drei';
+import { Html, SpotLight, useGLTF, useAnimations } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import Header from '../components/Header';
 import Date from '../components/Date';
-import {Corona} from '../components/Model';
+import { Corona } from '../components/Model';
 import Content from '../components/Content';
 
 function Light({ vec = new Vector3(), ...props }) {
@@ -62,9 +57,9 @@ export default function Home() {
       className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between">
       <Header progress={true} />
       <div className="h-screen w-screen absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-        <Corona x={0} y={0.5} z={0}/>
+        <Corona x={0} y={0.5} z={0} />
       </div>
-        <Content/>
+      {/* <Content /> */}
       <Date />
       <AnimatePresence exitBeforeEnter>
         <motion.div
