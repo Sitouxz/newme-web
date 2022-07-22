@@ -5,6 +5,7 @@ import {
   SpotLight,
   useGLTF,
   useAnimations,
+  PresentationControls
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 
@@ -60,7 +61,15 @@ function Scene(props) {
   return (
     <>
       <Suspense fallback={null}>
-        <Virus x={props.x} y={props.y} z={props.z} />
+        <PresentationControls
+          global
+          config={{ mass: 2, tension: 500 }}
+          snap={{ mass: 4, tension: 1500 }}
+          rotation={[0, 0.3, 0]}
+          polar={[-Math.PI / 3, Math.PI / 3]}
+          azimuth={[-Math.PI / 1.4, Math.PI / 2]}>
+          <Virus x={props.x} y={props.y} z={props.z} />
+        </PresentationControls>
       </Suspense>
       <SpotLight
         intensity={1}
@@ -85,10 +94,8 @@ function Scene(props) {
 
 export function Corona(props) {
   return (
-    <div>
       <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
         <Scene x={props.x} y={props.y} z={props.z} />
       </Canvas>
-    </div>
   );
 };

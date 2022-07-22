@@ -59,7 +59,7 @@ export default function Home() {
       <div className="h-screen w-screen absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
         <Corona x={0} y={0.5} z={0} />
       </div>
-      {/* <Content /> */}
+      <Content />
       <Date />
       <AnimatePresence exitBeforeEnter>
         <motion.div

@@ -17,60 +17,60 @@ function Content() {
     gsap.core.globals('ScrollTrigger', ScrollTrigger);
   }
 
-  // useEffect(() => {
-  //   const size = 0.15;
+  useEffect(() => {
+    const size = 0.25;
+    const mid = 250;
+    boxRef.current.forEach((el, index) => {
+      let tl = gsap.timeline({
+        // yes, we can add it to an entire timeline!
+        scrollTrigger: {
+          trigger: el,
+          scrub: 1
+        }
+      });
+      tl.to(el, {
+        x: mid,
+        scale: 0.8 * size,
+        opacity: 0.3,
+        rotationY: 200,
 
-  //   boxRef.current.forEach((el, index) => {
-  //     let tl = gsap.timeline({
-  //       // yes, we can add it to an entire timeline!
-  //       scrollTrigger: {
-  //         trigger: el,
-  //         scrub: 1
-  //       }
-  //     });
-  //     tl.to(el, {
-  //       x: -200,
-  //       scale: 0.8 * size,
-  //       opacity: 0.3,
-  //       rotationY: 200,
+        duration: 1.25
+      })
+        .to(el, {
+          x: -350,
+          scale: 1.5 * size,
+          opacity: 0.5,
+          rotationY: 40,
 
-  //       duration: 1.25
-  //     })
-  //       .to(el, {
-  //         x: -350,
-  //         scale: 1.5 * size,
-  //         opacity: 0.5,
-  //         rotationY: 40,
+          duration: 1
+        })
 
-  //         duration: 1
-  //       })
+        .to(el, {
+          x: 0,
+          scale: 5 * size,
+          rotationY: 0,
+          opacity: 1,
 
-  //       .to(el, {
-  //         x: 0,
-  //         scale: 5 * size,
-  //         rotationY: 0,
-  //         opacity: 1,
+          duration: 0.5
+        })
+        .to(el, {
+          x: 400,
+          scale: 1.5 * size,
+          opacity: 0.5,
+          rotationY: -40,
 
-  //         duration: 0.5
-  //       })
-  //       .to(el, {
-  //         x: 400,
-  //         scale: 1.5 * size,
-  //         opacity: 0.5,
-  //         rotationY: -40,
+          duration: 1
+        })
+        .to(el, {
+          x: 200,
+          scale: 0.3 * size,
+          opacity: 0.3,
+          rotationY: -170,
 
-  //         duration: 1
-  //       })
-  //       .to(el, {
-  //         x: 200,
-  //         scale: 0.3 * size,
-  //         opacity: 0.3,
-  //         rotationY: -170,
-
-  //         duration: 1.25
-  //       });
-  //   });
-  // });
+          duration: 1.25
+        });
+    });
+  });
   return (
     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex gap-10">
       {[...Array(10)].map((_, index) => (
