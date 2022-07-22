@@ -72,7 +72,10 @@ function Content() {
     });
   });
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-10">
+    <div
+      className="flex justify-center items-center flex-col gap-10"
+      // style={{ top: '0' }}
+    >
       {[...Array(10)].map((_, index) => (
         <div
           key={index}
