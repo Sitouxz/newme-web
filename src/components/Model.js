@@ -1,11 +1,7 @@
 import React, { useRef, useEffect, Suspense } from 'react';
 import virus_object from '../assets/model/model.glb';
 import { Vector3 } from 'three';
-import {
-  SpotLight,
-  useGLTF,
-  useAnimations,
-} from '@react-three/drei';
+import { SpotLight, useGLTF, useAnimations } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 
 function Light({ vec = new Vector3(), ...props }) {
@@ -31,7 +27,7 @@ function Light({ vec = new Vector3(), ...props }) {
       />
     </>
   );
-};
+}
 
 function Virus(props) {
   const group = useRef();
@@ -54,7 +50,7 @@ function Virus(props) {
       <mesh receiveShadow position={[0, -1, 0]} rotation-x={-Math.PI / 2} />
     </group>
   );
-};
+}
 
 function Scene(props) {
   return (
@@ -81,14 +77,12 @@ function Scene(props) {
       <Light intensity={0.7} position={[6, -7, 0]} color="#BCFFCE" />
     </>
   );
-};
+}
 
 export function Corona(props) {
   return (
-    <div>
-      <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
-        <Scene x={props.x} y={props.y} z={props.z} />
-      </Canvas>
-    </div>
+    <Canvas camera={{ position: [0, 0, 3], fov: 55, near: 1, far: 20 }}>
+      <Scene x={props.x} y={props.y} z={props.z} />
+    </Canvas>
   );
-};
+}
