@@ -40,7 +40,7 @@ export default function News() {
   const transAnim = useTransform(x, [0, 3000], [0, 1]);
 
   return (
-    <motion.div className="container mx-auto px-4 bg-[#BCFFCE]">
+    <motion.div className="container mx-auto pb-10 px-4 bg-[#BCFFCE]">
       <AnimatePresence exitBeforeEnter>
         <Header sticky={false} />
       </AnimatePresence>
