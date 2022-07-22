@@ -19,25 +19,34 @@ function Content() {
 
   useEffect(() => {
     const size = 0.25;
-    const mid = 250;
     boxRef.current.forEach((el, index) => {
       let tl = gsap.timeline({
         // yes, we can add it to an entire timeline!
         scrollTrigger: {
+          // start: "top top",
+          // end: "bot bot",
           trigger: el,
           scrub: 1,
         },
       });
       tl.to(el, {
-        x: mid,
+        x: -100,
         scale: 0.8 * size,
         opacity: 0.3,
         rotationY: 200,
 
         duration: 1.25,
-      })
+      }) 
         .to(el, {
-          x: -350,
+          x: -100,
+          scale: 0.8 * size,
+          opacity: 0.3,
+          rotationY: 200,
+
+          duration: 1.25,
+        })
+        .to(el, {
+          x: -150,
           scale: 1.5 * size,
           opacity: 0.5,
           rotationY: 40,
@@ -54,7 +63,7 @@ function Content() {
           duration: 0.5,
         })
         .to(el, {
-          x: 400,
+          x: 100,
           scale: 1.5 * size,
           opacity: 0.5,
           rotationY: -40,
@@ -62,7 +71,7 @@ function Content() {
           duration: 1,
         })
         .to(el, {
-          x: 200,
+          x: 150,
           scale: 0.3 * size,
           opacity: 0.3,
           rotationY: -170,
