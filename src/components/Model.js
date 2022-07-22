@@ -36,7 +36,7 @@ function Light({ vec = new Vector3(), ...props }) {
 
 function Virus(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('./model.glb');
+  const { nodes, materials, animations } = useGLTF('./virus.gltf');
   const { actions } = useAnimations(animations, group);
   useEffect(() => {
     actions.virusAction.play();
