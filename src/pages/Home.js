@@ -72,7 +72,38 @@ export default function Home() {
       <div className="h-screen w-screen fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
         <Corona x={0} y={0} z={0} />
       </div>
-      <Content />
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="flex flex-col gap-5">
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+        </div>
+        <div className="flex flex-col gap-5">
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+        </div>
+        <div className="flex flex-col gap-5">
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+          <Content />
+        </div>
+      </div>
       <Date />
       <AnimatePresence exitBeforeEnter>
         <motion.div

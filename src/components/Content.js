@@ -124,7 +124,7 @@ function Content({ position = [0, 0, 2] }) {
       <div
         // key={index}
         ref={addToRefs}
-        className="relative rounded-[50px] border-[6px] border-white flex h-[300px] w-[500px]  bg-[url('https://img.beritasatu.com/cache/beritasatu/910x580-2/1629780150.jpg')]">
+        className="relative rounded-[50px] border-[6px] border-white flex h-[250px] w-[500px]  bg-[url('https://img.beritasatu.com/cache/beritasatu/910x580-2/1629780150.jpg')]">
         <div className="absolute top-0 left-0 w-full h-full rounded-[50px] bg-gradient-to-t from-black to-transparent z-0"></div>
         <div className="flex flex-col justify-end p-4 leading-normal z-10">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">
