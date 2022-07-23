@@ -1,4 +1,6 @@
-import React from 'react'; // { useRef, useEffect, Suspense }
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
   motion,
   useTransform,
@@ -53,6 +55,106 @@ export default function Home() {
   const x = useMotionValue(0);
   const transAnim = useTransform(x, [0, 3000], [0, 1]);
 
+
+  const boxRef = useRef([]);
+  boxRef.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !boxRef.current.includes(el)) {
+      boxRef.current.push(el);
+    }
+  };
+
+  
+  if (typeof window !== `undefined`) {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.core.globals('ScrollTrigger', ScrollTrigger);
+  }
+  // useEffect(() => {
+    //   gsap.to(boxRef.current, { x: posmid+"vh" });
+    // });
+  useEffect(() => {
+    let posmid = 50;
+    const size = 1;
+    boxRef.current.forEach((el, index) => {
+      let posmid = 50;
+    const size = 1;
+      let tl = gsap.timeline({
+        // yes, we can add it to an entire timeline!
+        scrollTrigger: {
+          // start: "bot top",
+          end: 'top',
+          trigger: el,
+          scrub: 0.1,
+        },
+      });
+      tl.to(el, {
+        x: posmid-10+"vh",
+        // scale: 0.8 * size,
+        // opacity: 0.3,
+        // rotationY: 200,
+        duration: 1,
+      })
+        .to(el, {
+          x: posmid-20+"vh",
+          // scale: 0.8 * size,
+          // opacity: 0.3,
+          // rotationY: 200,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid-30+"vh",
+          // scale: 1.5 * size,
+          // opacity: 0.5,
+          // rotationY: 40,
+
+          duration: 1,
+        })
+        
+        .to(el, {
+          x: posmid-20+"vh",
+          // scale: 5 * size,
+          rotationY: 0,
+          opacity: 1,
+
+          duration: 0.5,
+        })
+        .to(el, {
+          x: posmid-10+"vh",
+          // scale: 1.5 * size,
+          // opacity: 0.5,
+          // rotationY: -40,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+10+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+20+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        });
+    });
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -74,6 +176,16 @@ export default function Home() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3">
         <div className="flex flex-col gap-5">
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+          <div ref={addToRefs}><Content /></div>
+        </div>
+        {/* <div className="flex flex-col gap-5">
           <Content />
           <Content />
           <Content />
@@ -92,17 +204,7 @@ export default function Home() {
           <Content />
           <Content />
           <Content />
-        </div>
-        <div className="flex flex-col gap-5">
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-        </div>
+        </div> */}
       </div>
       <Date />
       <AnimatePresence exitBeforeEnter>

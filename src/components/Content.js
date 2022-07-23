@@ -37,93 +37,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 //   );
 // }
 
-function Content({ position = [0, 0, 2] }) {
-  const boxRef = useRef([]);
-  boxRef.current = [];
-
-  const addToRefs = (el) => {
-    if (el && !boxRef.current.includes(el)) {
-      boxRef.current.push(el);
-    }
-  };
-
-  if (typeof window !== `undefined`) {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.core.globals('ScrollTrigger', ScrollTrigger);
-  }
-
-  useEffect(() => {
-    const size = 0.2;
-    boxRef.current.forEach((el, index) => {
-      let tl = gsap.timeline({
-        // yes, we can add it to an entire timeline!
-        scrollTrigger: {
-          // start: "top bot",
-          end: 'bot top',
-          trigger: el,
-          scrub: 0.1,
-        },
-      });
-      tl.to(el, {
-        x: -100,
-        scale: 0.8 * size,
-        // opacity: 0.3,
-        // rotationY: 200,
-
-        duration: 1.25,
-      })
-        .to(el, {
-          x: -200,
-          scale: 0.8 * size,
-          // opacity: 0.3,
-          // rotationY: 200,
-
-          duration: 1.25,
-        })
-        .to(el, {
-          x: -200,
-          scale: 1.5 * size,
-          // opacity: 0.5,
-          // rotationY: 40,
-
-          duration: 1,
-        })
-
-        .to(el, {
-          x: 0,
-          scale: 5 * size,
-          rotationY: 0,
-          opacity: 1,
-
-          duration: 0.5,
-        })
-        .to(el, {
-          x: 200,
-          scale: 1.5 * size,
-          // opacity: 0.5,
-          // rotationY: -40,
-
-          duration: 1,
-        })
-        .to(el, {
-          x: 300,
-          scale: 0.3 * size,
-          // opacity: 0.3,
-          // rotationY: -170,
-
-          duration: 1.25,
-        });
-    });
-  });
+function Content() {
+  
   return (
     <div
       className="flex justify-center items-center flex-col gap-10"
       // style={{ top: '50%' }}
-      ref={addToRefs}>
+      >
       {/* {[...Array(10)].map((_, index) => ( */}
       <div
         // key={index}
-        ref={addToRefs}
         className="relative rounded-[50px] border-[6px] border-white flex h-[250px] w-[500px]  bg-[url('https://img.beritasatu.com/cache/beritasatu/910x580-2/1629780150.jpg')]">
         <div className="absolute top-0 left-0 w-full h-full rounded-[50px] bg-gradient-to-t from-black to-transparent z-0"></div>
         <div className="flex flex-col justify-end p-4 leading-normal z-10">
