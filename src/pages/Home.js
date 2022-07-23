@@ -71,14 +71,12 @@ export default function Home() {
     gsap.core.globals('ScrollTrigger', ScrollTrigger);
   }
   let posmid = 50;
-  let posx = 20;
   useEffect(() => {
-      gsap.to(boxRef.current, { x: posmid+"vh" });
     });
   useEffect(() => {
-    const size = 1;
-    boxRef.current.forEach((el, index) => {
-    const size = 1;
+    boxRef.current.forEach((el, y) => {
+    y = y+90;
+    gsap.to(boxRef.current, { size: 0.5+y})
       let tl = gsap.timeline({
         // yes, we can add it to an entire timeline!
         scrollTrigger: {
