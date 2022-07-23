@@ -76,33 +76,7 @@ export default function Home() {
     gsap.core.globals('ScrollTrigger', ScrollTrigger);
   }
   let posmid = 50;
-  let posx = 20;
-  useEffect((el2) => {
-    let tl2 = gsap.timeline({
-      // yes, we can add it to an entire timeline!
-      scrollTrigger: {
-        // start: "bot top",
-        end: 'top',
-        trigger: el2,
-        scrub: 0.1,
-      },
-    });
-    tl2.to(el2, {
-      // x: posmid - 10 + 'vh',
-      // scale: 0.8 * size,
-      opacity: 0.3,
-      // rotationY: 200,
-      duration: 1,
-    })
-    tl2.to(el2, {
-      // x: posmid - 10 + 'vh',
-      // scale: 0.8 * size,
-      opacity: 0,
-      // rotationY: 200,
-      duration: 1,
-    })
     gsap.to(scrollDown.current, { opacity: posmid+"vh" });
-  });
   useEffect(() => {
     const size = 1;
     boxRef.current.forEach((el, index) => {
@@ -199,7 +173,7 @@ export default function Home() {
         .to(el, {
           x: posmid + 'vh',
           // scale: 0.3 * size,
-          opacity: 1,
+          // opacity: 1,
           // rotationY: -170,
 
           duration: 1,
@@ -207,7 +181,7 @@ export default function Home() {
         .to(el, {
           x: posmid - 30 + 'vh',
           // scale: 0.3 * size,
-          opacity: 0.3,
+          // opacity: 0.3,
           // rotationY: -170,
 
           duration: 1,
@@ -245,7 +219,7 @@ export default function Home() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="container mx-auto px-4 h-screen flex flex-col justify-between text-white"
-      style={{ minHeight: '400vh' }}>
+      style={{ minHeight: '500vh' }}>
       <Header progress={true} sticky={true} />
       <div className="fixed top-0 left-0 z-0" style={{ minHeight: '300vh' }}>
         <SmokeElement
@@ -265,30 +239,63 @@ export default function Home() {
         <span className="animate-bounce text-5xl lg:text-7xl mr-1">Down</span>
       </div>
       <div className="absolute top-60 md:top-[100vh] -left-[60vh] md:-left-[50vh] lg:-left-[10vh] 2xl:left-[30vh] xl:left-[20vh]">
-        <div className="flex flex-col gap-5 ">
-          <div ref={addToRefs}>
-            <Content />
+        <div className="flex flex-col gap-40 ">
+        <div ref={addToRefs}>
+            <Content 
+            date="28 February 2020"
+            title="Governor Anies Baswedan Asks All Provincial Government Officers to Increase Risk Awareness of Coronavirus Transmission" 
+            desc="The Governor of Jakarta, Anies Baswedan, instructed the entire ranks of the Provincial Government to start taking steps to prevent the transmission of coronavirus infection which has now been officially named as Coronavirus Disease 2019 (COVID-19). The instructions given are also listed in Governor's Instruction No. 16 of 2020."
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="2 March 2020"
+            title="Government of Jakarta Formed COVID-19 Response Team" 
+            desc="To improve monitoring and supervision, Governor Anies Baswedan formed Jakarta's COVID-19 Response Team based at the Health Office in Central Jakarta. On the same occasion, Anies also committed to the openness of the government in every step to prevent corona outbreaks."
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="3 March 2020"
+            title="
+            Re-evaluation of Crowd Permits" 
+            desc="With the risk of coronavirus transmission that can occur in a crowd, the Government of Jakarta has stopped issuing crowd gathering permits in the capital. The provincial government is also reviewing permits that have already been issued."
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="6 March 2020"
+            title="corona.jakarta.go.id Website Goes Live" 
+            desc="Responding to requests from the public for up-to-date and reliable information about the development of the COVID-19 case in Jakarta, the Provincial Government together with the COVID-19 Response Team launched its official channel in the form of the microsite at corona.jakarta.go.id."
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="15 March 2020"
+            title="Modification of Jakarta Public Transportation Services" 
+            desc="Jakarta as the economic center of Indonesia attracts large numbers of workers from satellite cities. Therefore, to prevent transmission in tight public spaces such as the inside of buses and trains, the Government of Jakarta has modified its public transportation services, including MRT, LRT, and Transjakarta. Changes include limiting routes as well as passenger capacity to enable the application of social distancing rules."
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="9 April 2020"
+            title="First Period of Large-Scale Social Restriction (PSBB)" 
+            desc="asdasdasdasdagsdgsdfg"
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="30 April 2020"
+            title="Government of Jakarta Launches Large-Scale Social Collaboration (KSBB)" 
+            desc="During the holy month of Ramadan, the Government of Jakarta officially launches the Large-scale Social Collaboration (KSBB) program as a medium for residents to help others. In the KSBB, the government only acts as a liaison for people who want to give aid to vulnerable citizens affected by the coronavirus outbreak and certain other locations."
+            />
           </div>
           <div ref={addToRefs}>
-            <Content />
+            <Content 
+            date="5 May 2020"
+            title="Government Collaborates with Citizens Through the JDCN" 
+            desc="The spirit of cooperation which has become the culture of the people of Jakarta was revived when the COVID-19 pandemic hit the capital. The government also invites the participation of citizens through the Corona Response Collaboration program managed by the JDCN network. Here, residents can contribute as volunteers or provide the equipment needed by medical personnel to fight the coronavirus outbreak."
+            />
           </div>
         </div>
       </div>
