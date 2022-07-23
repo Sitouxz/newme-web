@@ -55,28 +55,58 @@ export default function Home() {
   const x = useMotionValue(0);
   const transAnim = useTransform(x, [0, 3000], [0, 1]);
 
-
   const boxRef = useRef([]);
+  const scrollDown2 = useRef();
   boxRef.current = [];
+  scrollDown2.current = [];
 
   const addToRefs = (el) => {
     if (el && !boxRef.current.includes(el)) {
       boxRef.current.push(el);
     }
   };
+  const scrollDown = (el2) => {
+    if (el2 && !scrollDown2.current.includes(el2)) {
+      scrollDown2.current.push(el2);
+    }
+  };
 
-  
   if (typeof window !== `undefined`) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.core.globals('ScrollTrigger', ScrollTrigger);
   }
   let posmid = 50;
-  useEffect(() => {
+  let posx = 20;
+  useEffect((el2) => {
+    let tl2 = gsap.timeline({
+      // yes, we can add it to an entire timeline!
+      scrollTrigger: {
+        // start: "bot top",
+        end: 'top',
+        trigger: el2,
+        scrub: 0.1,
+      },
     });
+    tl2.to(el2, {
+      // x: posmid - 10 + 'vh',
+      // scale: 0.8 * size,
+      opacity: 0.3,
+      // rotationY: 200,
+      duration: 1,
+    })
+    tl2.to(el2, {
+      // x: posmid - 10 + 'vh',
+      // scale: 0.8 * size,
+      opacity: 0,
+      // rotationY: 200,
+      duration: 1,
+    })
+    gsap.to(scrollDown.current, { opacity: posmid+"vh" });
+  });
   useEffect(() => {
-    boxRef.current.forEach((el, y) => {
-    y = y+90;
-    gsap.to(boxRef.current, { size: 0.5+y})
+    const size = 1;
+    boxRef.current.forEach((el, index) => {
+      const size = 1;
       let tl = gsap.timeline({
         // yes, we can add it to an entire timeline!
         scrollTrigger: {
@@ -87,14 +117,14 @@ export default function Home() {
         },
       });
       tl.to(el, {
-        x: posmid-10+"vh",
+        x: posmid - 10 + 'vh',
         // scale: 0.8 * size,
         // opacity: 0.3,
         // rotationY: 200,
         duration: 1,
       })
         .to(el, {
-          x: posmid-20+"vh",
+          x: posmid - 15 + 'vh',
           // scale: 0.8 * size,
           // opacity: 0.3,
           // rotationY: 200,
@@ -102,7 +132,15 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid-30+"vh",
+          x: posmid - 30 + 'vh',
+          // scale: 0.8 * size,
+          // opacity: 0.3,
+          // rotationY: 200,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid - 50 + 'vh',
           // scale: 1.5 * size,
           // opacity: 0.5,
           // rotationY: 40,
@@ -110,15 +148,7 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid-40+"vh",
-          // scale: 1.5 * size,
-          // opacity: 0.5,
-          // rotationY: -40,
-
-          duration: 1,
-        })
-        .to(el, {
-          x: posmid-30+"vh",
+          x: posmid - 30 + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -126,7 +156,15 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid-20+"vh",
+          x: posmid - 15 + 'vh',
+          // scale: 0.8 * size,
+          // opacity: 0.3,
+          // rotationY: 200,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -134,7 +172,8 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid-10+"vh",
+          x: posmid + 30 + 'vh',
+          z: 50,
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -142,7 +181,7 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid+"vh",
+          x: posmid + 50 + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -150,7 +189,7 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid+10+"vh",
+          x: posmid + 30 + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -158,7 +197,23 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid+20+"vh",
+          x: posmid + 'vh',
+          // scale: 0.3 * size,
+          opacity: 1,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid - 30 + 'vh',
+          // scale: 0.3 * size,
+          opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid - 50 + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -166,7 +221,7 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid+30+"vh",
+          x: posmid - 30 + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
@@ -174,37 +229,13 @@ export default function Home() {
           duration: 1,
         })
         .to(el, {
-          x: posmid+40+"vh",
+          x: posmid + 'vh',
           // scale: 0.3 * size,
           // opacity: 0.3,
           // rotationY: -170,
 
           duration: 1,
-        })
-        .to(el, {
-          x: posmid+30+"vh",
-          // scale: 0.3 * size,
-          // opacity: 0.3,
-          // rotationY: -170,
-
-          duration: 1,
-        })
-        .to(el, {
-          x: posmid+20+"vh",
-          // scale: 0.3 * size,
-          // opacity: 0.3,
-          // rotationY: -170,
-
-          duration: 1,
-        })
-        .to(el, {
-          x: posmid+10+"vh",
-          // scale: 0.3 * size,
-          // opacity: 0.3,
-          // rotationY: -170,
-
-          duration: 1,
-        })
+        });
     });
   });
 
@@ -213,8 +244,8 @@ export default function Home() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 bg-[#BCFFCE] h-screen flex flex-col justify-between text-white"
-      style={{ minHeight: '350vh' }}>
+      className="container mx-auto px-4 h-screen flex flex-col justify-between text-white"
+      style={{ minHeight: '400vh' }}>
       <Header progress={true} sticky={true} />
       <div className="fixed top-0 left-0 z-0" style={{ minHeight: '300vh' }}>
         <SmokeElement
@@ -227,37 +258,39 @@ export default function Home() {
       <div className="h-screen w-screen fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
         <Corona x={0} y={0} z={0} />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        <div className="flex flex-col gap-5">
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
-          <div ref={addToRefs}><Content /></div>
+      <div className="absolute flex flex-col justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden">
+        <h1 className="text-7xl md:text-9xl font-bold text-white text-center" ref={scrollDown}>
+          Start Scrolling
+        </h1>
+        <span className="animate-bounce text-5xl lg:text-7xl mr-1">Down</span>
+      </div>
+      <div className="absolute top-60 md:top-[100vh] -left-[60vh] md:left-[0vh] lg:left-[30vh] z-20">
+        <div className="flex flex-col gap-5 ">
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
+          <div ref={addToRefs}>
+            <Content />
+          </div>
         </div>
-        {/* <div className="flex flex-col gap-5">
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-        </div>
-        <div className="flex flex-col gap-5">
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-          <Content />
-        </div> */}
       </div>
       <Date />
       <AnimatePresence exitBeforeEnter>
