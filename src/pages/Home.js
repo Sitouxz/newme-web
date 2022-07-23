@@ -227,13 +227,13 @@ export default function Home() {
       <div className="h-screen w-screen fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 overflow-hidden">
         <Corona x={0} y={0} z={0} />
       </div>
-      <div className="absolute flex flex-col justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden">
+      <div className=" absolute flex flex-col justify-center items-center top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 overflow-hidden">
         <h1 className="text-7xl md:text-9xl font-bold text-white text-center">
           Start Scrolling
         </h1>
         <span className="animate-bounce text-5xl lg:text-7xl mr-1">Down</span>
       </div>
-      <div className="absolute top-60 md:top-[100vh] -left-[60vh] md:left-[0vh] lg:left-[30vh]">
+      <div className="absolute top-60 md:top-[100vh] -left-[60vh] md:-left-[50vh] lg:-left-[10vh] 2xl:left-[30vh] xl:left-[20vh]">
         <div className="flex flex-col gap-5 ">
           <div ref={addToRefs}>
             <Content />
