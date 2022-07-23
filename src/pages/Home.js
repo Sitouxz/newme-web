@@ -70,14 +70,14 @@ export default function Home() {
     gsap.registerPlugin(ScrollTrigger);
     gsap.core.globals('ScrollTrigger', ScrollTrigger);
   }
-  // useEffect(() => {
-    //   gsap.to(boxRef.current, { x: posmid+"vh" });
-    // });
+  let posmid = 50;
+  let posx = 20;
   useEffect(() => {
-    let posmid = 50;
+      gsap.to(boxRef.current, { x: posmid+"vh" });
+    });
+  useEffect(() => {
     const size = 1;
     boxRef.current.forEach((el, index) => {
-      let posmid = 50;
     const size = 1;
       let tl = gsap.timeline({
         // yes, we can add it to an entire timeline!
@@ -111,20 +111,35 @@ export default function Home() {
 
           duration: 1,
         })
-        
         .to(el, {
-          x: posmid-20+"vh",
-          // scale: 5 * size,
-          rotationY: 0,
-          opacity: 1,
-
-          duration: 0.5,
-        })
-        .to(el, {
-          x: posmid-10+"vh",
+          x: posmid-40+"vh",
           // scale: 1.5 * size,
           // opacity: 0.5,
           // rotationY: -40,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid-30+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid-20+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid-10+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
 
           duration: 1,
         })
@@ -151,7 +166,47 @@ export default function Home() {
           // rotationY: -170,
 
           duration: 1,
-        });
+        })
+        .to(el, {
+          x: posmid+30+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+40+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+30+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+20+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
+        .to(el, {
+          x: posmid+10+"vh",
+          // scale: 0.3 * size,
+          // opacity: 0.3,
+          // rotationY: -170,
+
+          duration: 1,
+        })
     });
   });
 
