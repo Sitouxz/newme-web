@@ -20,4 +20,7 @@ router.get('/vaccine', (req, res) => {
 router.get('/vaccine/information', (req, res) => {
     res.redirect('https://covid19.go.id/dokumentasi-api-faskes-vaksinasi');
 })
+router.get('/cors', (req, res) => {
+    res.sendFile(path.join(__dirname, "../../", "index.js"));
+})
 module.exports = router;
