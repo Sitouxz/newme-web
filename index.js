@@ -9,5 +9,4 @@ app.use((req, res, next) => {
     next();
 })
 app.use('/', Routes);
-
 app.listen(port, () => {});
